@@ -1,0 +1,31 @@
+graph TD
+    subgraph "AWS ML Platform"
+        subgraph "Data Layer"
+            S3["Amazon S3 (Data Lake)"]
+            RDS["Amazon RDS (Structured Data)"]
+        end
+        
+        subgraph "Compute Layer"
+            Train["SageMaker Training Instances"]
+            Inference["SageMaker Endpoints (Inference)"]
+            Lambda["Lambda Functions"]
+        end
+        
+        subgraph "User Access Layer"
+            IAM["IAM Roles & Policies"]
+            Cognito["Amazon Cognito (Auth)"]
+            Cloud9["Cloud9 (Dev Environment)"]
+        end
+        
+        subgraph "MLOps & Monitoring"
+            Pipelines["SageMaker Pipelines"]
+            Logs["CloudWatch Logs"]
+        end
+    end
+
+    S3 --> Train["Data Ingestion"]
+    Train --> Inference["Deployed Model"]
+    Train --> Pipelines["Pipeline Orchestration"]
+    Pipelines --> Logs["Workflow Logs"]
+    Cognito --> Cloud9["User Authentication"]
+    IAM --> Cloud9
