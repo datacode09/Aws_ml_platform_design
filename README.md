@@ -179,3 +179,7 @@ The following steps outline how to implement the AWS ML Platform:
    - User access and resource isolation.
 2. Address any security, performance, or functionality gaps.
    
+
+== License
+
+This project is licensed under the [MIT License](LICENSE).
